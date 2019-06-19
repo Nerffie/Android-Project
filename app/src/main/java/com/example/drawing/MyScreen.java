@@ -26,7 +26,7 @@ public class MyScreen extends Screen {
     private Color yellow_sprite;
     private Color rose_sprite;
     private Reset reset;
-    //private static int color;
+    private static int color ;
 
 
     //private DrawableImage drawableCercle1;
@@ -44,7 +44,7 @@ public class MyScreen extends Screen {
         //cercle2 = new Cercle(game,Asset.cercle,6*game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
         //carre1 = new Cercle(game,Asset.carre,game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
         //carre2 = new Cercle(game,Asset.carre,6*game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
-        red_sprite = new Color(game,Asset.red_sprite,100,50,100,100,0);
+        red_sprite = new Color(game,Asset.red_sprite,0,15,100,100,0);
 
         blue_clair_sprite = new Color(game,Asset.blue_clair_sprite,150,15,100,100,1);
 
@@ -65,7 +65,7 @@ public class MyScreen extends Screen {
         //Then we use this bitmap as the DrawableImage
 
 
-        //color = 0;
+        color = 0;
         //snake.setStatic(false);
 
 
@@ -96,12 +96,7 @@ public class MyScreen extends Screen {
 
         addSprite(reset);
 
-        red_sprite.setStatic(false);
-        green_clair_sprite.setStatic(false);
-        blue_clair_sprite.setStatic(false);
-        blue_fonce_sprite.setStatic(false);
-        rose_sprite.setStatic(false);
-        yellow_sprite.setStatic(false);
+
 
 
 
@@ -129,10 +124,7 @@ public class MyScreen extends Screen {
             /*if (s.getClass() == Cercle.class) {
                 Cercle cercle = (Cercle) s;
                 cercle.fill(x, y, MyScreen.color);
-            } else if (s.getClass() == Color.class) {
-                Color colorSprite = (Color) s;
-                MyScreen.color = colorSprite.color;
-            } else*/ if (s.getClass() == Reset.class) {
+            }  else*/ if (s.getClass() == Reset.class) {
                 Reset resetButton = (Reset) s;
                 resetButton.resetGame();
             }
@@ -140,6 +132,10 @@ public class MyScreen extends Screen {
                 //play sound
                 Background bg = (Background) s;
                 bg.play();
+            }
+            else if (s.getClass() == Color.class) {
+                Color colorSprite = (Color) s;
+                MyScreen.color = colorSprite.color;
             }
         }
 
@@ -149,11 +145,32 @@ public class MyScreen extends Screen {
     @Override
     public void handleDragging(int x, int y, int pointer) {
         super.handleDragging(x, y, pointer);
+        if (y>135) {
+            Sprite s;
+            s = currentSprite(x, y);
+            //s.setStatic(false);
+            addSprite(s);
+        }
         //Sprite s = getDraggedSprite();
+        //Log.i("here","wtf");
         //if(s.getClass()==Cercle.class){
         //    Cercle cercle = (Cercle) s;
         //    cercle.fill(x,y,MyScreen.color);
         //}
+    }
+
+    private Sprite currentSprite(int x,int y) {
+
+        switch (color){
+            case 0 : return new Color(game,Asset.red_sprite,x,y,100,100,0);
+            case 1 : return new Color(game,Asset.blue_clair_sprite,x,y,100,100,1);
+            case 2 : return new Color(game,Asset.blue_fonce_sprite,x,y,100,100,2);
+            case 3 : return new Color(game,Asset.green_clair_sprite,x,y,100,100,3);
+            case 4 : return new Color(game,Asset.rose_sprite,x,y,100,100,4);
+            case 5 : return new Color(game,Asset.yellow_sprite,x,y,100,100,5);
+        }
+
+        return null;
     }
 
     @Override

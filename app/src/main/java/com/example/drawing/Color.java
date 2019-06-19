@@ -21,5 +21,6 @@ public class Color extends Sprite {
         super(image, x, y, height, width);
         g = game;
         this.color=color;
+
     }
 }
