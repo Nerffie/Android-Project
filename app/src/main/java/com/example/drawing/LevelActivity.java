@@ -9,6 +9,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.e_mobadara.audiomanaging.AudioSettingsActivity;
 import com.example.drawing.MainActivity;
 
 public class LevelActivity extends AppCompatActivity {
@@ -28,16 +29,15 @@ public class LevelActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.level1_button:
                 Asset.LEVEL= 1;
-                //intent = new Intent(this, ChoixLettreActivity.class);
+
                 break;
             case R.id.level2_button:
                 Asset.LEVEL= 2;
-                //intent = new Intent(this,ChoixLettreActivity.class);
+
                 break;
 
             case R.id.level3_button:
                 Asset.LEVEL= 3;
-                //intent = new Intent(this,ChoixLettreActivity.class);
                 break;
         }
 
@@ -61,8 +61,7 @@ public class LevelActivity extends AppCompatActivity {
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
-        //Loading the lists from Resources instead of loading them multiple times at runtime.
-        //Asset.CHARACTER_LIST = getResources().getStringArray(R.array.Characters);
+
     }
 
     public void handleMusic(View view) {
@@ -83,10 +82,10 @@ public class LevelActivity extends AppCompatActivity {
         this.finish();
     }
 
-    //public void AudioSettings(View view) {
-        //Intent i = new Intent(this, AudioSettingsActivity.class);
-        //startActivity(i);
-    //}
+    public void AudioSettings(View view) {
+        Intent i = new Intent(this, AudioSettingsActivity.class);
+        startActivity(i);
+    }
 
     @Override
     protected void onDestroy() {

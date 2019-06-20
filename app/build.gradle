@@ -30,7 +30,7 @@ dependencies {
     implementation 'com.github.e-mobadara:2d-game-lib:v1.2.6'
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
-    //implementation project(':AudioManager')
+    implementation project(':AudioManager')
     implementation 'com.github.e-mobadara:foxy-auth:v0.2.1-beta'
     implementation 'com.android.support:multidex:1.0.3'
 }

@@ -1,102 +1,115 @@
 package com.example.drawing;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.util.Log;
 
 import com.example.emobadaragaminglib.Base.Game;
 import com.example.emobadaragaminglib.Base.Graphics;
+import com.example.emobadaragaminglib.Base.Image;
 import com.example.emobadaragaminglib.Base.Screen;
 import com.example.emobadaragaminglib.Components.DrawableImage;
 import com.example.emobadaragaminglib.Components.Sprite;
 import com.example.emobadaragaminglib.Implementation.AndroidGame;
+import com.example.emobadaragaminglib.Implementation.AndroidSound;
+import com.e_mobadara.audiomanaging.moblibAudioFileManager;
+import com.example.drawing.GameActivity;
+
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MyScreen extends Screen {
-
-    //private MySprite snake;
     private Background bg;
-    //private Cercle cercle1;
-    //private Cercle cercle2;
-    //private Cercle carre1;
-    //private Cercle carre2;
+
     private Color red_sprite;
     private Color blue_clair_sprite;
     private Color blue_fonce_sprite;
     private Color green_clair_sprite;
     private Color yellow_sprite;
     private Color rose_sprite;
-    private Reset reset;
+    private Button reset;
+    private Button valider;
+    private Button happy_face;
+    private Button sad_face;
+    private Button wink_face;
     private static int color ;
-    private int score;
+    private boolean score;
+    private int fill;
 
 
-    //private DrawableImage drawableCercle1;
-    //private DrawableImage drawableCercle2;
+
+
+
 
 
     public MyScreen(Game game) {
 
         super(game);
 
-        //snake = new MySprite(game,Asset.avatar,0,0,100,100);
-        switch(Asset.LEVEL){
-            case 1 :  bg = new Background(game,Decor.forbidden_zone,Decor.bg1,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth()); break;
-            case 2 :  bg = new Background(game,Decor.forbidden_zone,Decor.bg2,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth()); break;
-            case 3 :  bg = new Background(game,Decor.forbidden_zone,Decor.bg3,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth()); break;
+        Asset.red_sprite = game.getGraphics().newImage(R.drawable.rouge,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.blue_clair_sprite = game.getGraphics().newImage(R.drawable.bleu_clair,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.green_clair_sprite = game.getGraphics().newImage(R.drawable.vert_clair,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.yellow_sprite = game.getGraphics().newImage(R.drawable.jaune,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.rose_sprite = game.getGraphics().newImage(R.drawable.rose,Graphics.ImageFormat.ARGB8888,game.getResources());
+
+
+        Asset.valider = game.getGraphics().newImage(R.drawable.valider,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.reset = game.getGraphics().newImage(R.drawable.reset,Graphics.ImageFormat.ARGB8888,game.getResources());
+
+        //Asset.happy_face = game.getGraphics().newImage(R.drawable.happy_face,Graphics.ImageFormat.ARGB8888,game.getResources());
+        //Asset.sad_face = game.getGraphics().newImage(R.drawable.sad_face,Graphics.ImageFormat.ARGB8888,game.getResources());
+        //Asset.wink_face = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
+        //Asset.blank = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
+
+        // Audio modules imported :
+
+
+
+
+        switch (Asset.LEVEL){
+            case 1 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());break;
+            case 2 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());break;
+            case 3 : Decor.bg1= game.getGraphics().newImage(R.drawable.carreaux_difficile,Graphics.ImageFormat.ARGB8888,game.getResources());break;
         }
 
 
-        //cercle1 = new Cercle(game,Asset.cercle,game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
-        //cercle2 = new Cercle(game,Asset.cercle,6*game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
-        //carre1 = new Cercle(game,Asset.carre,game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
-        //carre2 = new Cercle(game,Asset.carre,6*game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
+
+        bg = new Background(game,Decor.bg1,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth());
+
         red_sprite = new Color(game,Asset.red_sprite,0,15,100,100,0);
 
         blue_clair_sprite = new Color(game,Asset.blue_clair_sprite,150,15,100,100,1);
 
-        blue_fonce_sprite = new Color(game,Asset.blue_fonce_sprite,300,15,100,100,2);
+        green_clair_sprite = new Color(game,Asset.green_clair_sprite,300,15,100,100,3);
 
-        green_clair_sprite = new Color(game,Asset.green_clair_sprite,450,15,100,100,3);
+        rose_sprite = new Color(game,Asset.rose_sprite,450,15,100,100,4);
 
-        rose_sprite = new Color(game,Asset.rose_sprite,600,15,100,100,4);
+        yellow_sprite = new Color(game,Asset.yellow_sprite,600,15,100,100,5);
 
-        yellow_sprite = new Color(game,Asset.yellow_sprite,750,15,100,100,5);
+        reset = new Button(game,Asset.reset,game.getGraphics().getWidth()*91/100,15,150,150);
 
-        reset = new Reset(game,Asset.reset,game.getGraphics().getHeight()+700,5,150,150);
+        valider = new Button(game,Asset.valider,game.getGraphics().getWidth()*78/100,15,150,150);
 
-        score = 0;
+        //happy_face = new Button(game,Asset.happy_face,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()/2,400,400);
 
+        //sad_face = new Button(game,Asset.sad_face,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()/2,400,400);
 
+        //wink_face = new Button(game,Asset.wink_face,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()/2,400,400);
 
-
-        //The drawableImage needs a bitmap. Let's create one from the R.drawable
-        //Bitmap mBitmap = BitmapFactory.decodeResource(((AndroidGame)game).getResources(), R.drawable.cercletransparent);
-
-        //Then we use this bitmap as the DrawableImage
-
+        score = true;
 
         color = 0;
-        //snake.setStatic(false);
 
+        fill = 0;
 
-
-
-        //game.getGraphics().drawImage(Asset.bg1,0,0,game.getGraphics().getWidth(),game.getGraphics().getHeight());
-        //game.getGraphics().drawImage(Asset.carre,game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
-        //game.getGraphics().drawImage(Asset.carre,6*game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
-
-
-        //addSprite(cercle1);
-        //addSprite(cercle2);
-        //addSprite(carre1);
-        //addSprite(carre2);
         addSprite(bg);
 
         addSprite(red_sprite);
 
         addSprite(blue_clair_sprite);
-
-        addSprite(blue_fonce_sprite);
 
         addSprite(green_clair_sprite);
 
@@ -106,9 +119,7 @@ public class MyScreen extends Screen {
 
         addSprite(reset);
 
-        addSprite(new Color(game,Asset.yellow_sprite,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()*4/100,100,100,5));
-
-        addSprite(new Color(game,Asset.yellow_sprite,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()*95/100,100,100,5));
+        addSprite(valider);
 
 
 
@@ -130,28 +141,98 @@ public class MyScreen extends Screen {
          * */
         super.handleTouchDown(x, y, pointer);
         Sprite s = getDraggedSprite();
-        if(s!=null) {
-
-
-            /*if (s.getClass() == Cercle.class) {
-                Cercle cercle = (Cercle) s;
-                cercle.fill(x, y, MyScreen.color);
-            }  else*/ if (s.getClass() == Reset.class) {
-                Reset resetButton = (Reset) s;
-                resetButton.resetGame();
-            }
-            else if (s.getClass() == Background.class) {
-                //play sound
-                Background bg = (Background) s;
-                bg.play();
-            }
-            else if (s.getClass() == Color.class) {
+        if (s != null) {
+            if (s.getClass() == Color.class) {
                 Color colorSprite = (Color) s;
                 MyScreen.color = colorSprite.color;
             }
+
+
+        }
+        if ((valider.contain(x, y))) {
+            if (resultat()) {
+                //valider bravo;
+                try {
+                    GameActivity.Winningsound.start();
+                } catch (Exception e) {
+                    Log.d("Error", "audio file is missing");
+                }
+                //bravo.setImage(drawing.bravo);
+                //again.setImage(drawing.no_color);
+                //addSprite(happy_face);
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        //bravo.setImage(drawing.no_color);
+                    }
+                };
+                timer.schedule(task, 1500);
+                playAudio("goodjob");
+
+                //data to send
+                //Asset.successAttempts++;
+                //Asset.date_end = Calendar.getInstance().getTime();
+                //long difference = (Asset.date_end.getTime() - Asset.date_start.getTime()) / 1000; //sec
+                //if (Asset.successAttempts == 1) { // first time
+                //    Asset.min_time = difference;
+                //} else if (Asset.min_time > difference) {
+                //   Asset.min_time = difference;
+                //}
+                //Asset.scores_time.add(difference);
+
+            } else {
+                //valider again;
+                try {
+                    GameActivity.Losingsound.start();
+                } catch (Exception e) {
+                    Log.d("Error", "audio file is missing");
+                }
+                //again.setImage(drawing.again);
+                //bravo.setImage(drawing.no_color);
+                //addSprite(sad_face);
+
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        //again.setImage(drawing.no_color);
+                    }
+                };
+                timer.schedule(task, 1500);
+                playAudio("tryagain");
+
+                //data to send
+                //Asset.failedAttempts++;
+            }
+            //game.setScreen(new MainScreen(game));
+            //resume();
+
+
         }
 
+        if ((reset.contain(x, y))) {
 
+            reset();
+        }
+    }
+
+    private void playAudio(String type) {
+
+        MediaPlayer winning = moblibAudioFileManager.getRandomAudioFile((Context) game, type, Asset.LANG);
+
+        if (winning == null) {
+            int id = 0;
+            try {
+                id = R.raw.class.getField("" + type + "_" + Asset.LANG).getInt(null);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+            winning = MediaPlayer.create((Context) game, id);
+        }
+        winning.start();
     }
 
     @Override
@@ -162,18 +243,9 @@ public class MyScreen extends Screen {
             s = currentSprite(x, y);
             //s.setStatic(false);
             addSprite(s);
-            if(y<game.getGraphics().getHeight()*4/100|| y>game.getGraphics().getHeight()*95/100){
-                score++;
-                Log.i("score",Integer.toString(score));
-
-            }
+            fill++;
+           score(Asset.LEVEL, x ,y);
         }
-        //Sprite s = getDraggedSprite();
-        //Log.i("here","wtf");
-        //if(s.getClass()==Cercle.class){
-        //    Cercle cercle = (Cercle) s;
-        //    cercle.fill(x,y,MyScreen.color);
-        //}
     }
 
     private Sprite currentSprite(int x,int y) {
@@ -181,7 +253,6 @@ public class MyScreen extends Screen {
         switch (color){
             case 0 : return new Color(game,Asset.red_sprite,x,y,100,100,0);
             case 1 : return new Color(game,Asset.blue_clair_sprite,x,y,100,100,1);
-            case 2 : return new Color(game,Asset.blue_fonce_sprite,x,y,100,100,2);
             case 3 : return new Color(game,Asset.green_clair_sprite,x,y,100,100,3);
             case 4 : return new Color(game,Asset.rose_sprite,x,y,100,100,4);
             case 5 : return new Color(game,Asset.yellow_sprite,x,y,100,100,5);
@@ -192,6 +263,63 @@ public class MyScreen extends Screen {
 
     private boolean validate (){
         return false;
+    }
+
+    private void reset(){
+        dispose();
+        ((GameActivity) game).perviousClicked();
+
+    }
+
+    public void score(int level,int x ,int y){
+        switch(level){
+            case 1 : level1(x,y);break;
+            case 2 : level2(x,y);break;
+            case 3 : level3(x,y);break;
+        }
+    }
+
+    public void level1(int x,int y){
+
+        if(x<game.getGraphics().getWidth()*4/100 || x>game.getGraphics().getWidth()*95/100 || y>game.getGraphics().getHeight()*86/100 || (x>game.getGraphics().getWidth()*43/100 && x<game.getGraphics().getWidth()*56/100) ){
+            score=false;
+            //Log.i("Aie","Aie");
+        }
+        Log.i("fill",Integer.toString(fill));
+
+
+    }
+
+    public boolean resultat(){
+        switch (Asset.LEVEL){
+            case 1 :
+                if (fill>200 && score)return true;
+                return false;
+
+
+            case 2 :
+                if(fill>400 && score)return true;
+                return false;
+
+
+            case 3 :
+                if (fill >150 && score)return true;
+                return false;
+
+        }
+        return false;
+    }
+
+    public void level2(int x,int y){
+        if(x<game.getGraphics().getWidth()*6/100 || x>game.getGraphics().getWidth()*93/100 || y>game.getGraphics().getHeight()*75/100 || (x>game.getGraphics().getWidth()*38/100 && x<game.getGraphics().getWidth()*58/100) ){
+            score=false;
+            //Log.i("Aie","Aie");
+        }
+        Log.i("fill",Integer.toString(fill));
+
+    }
+    public void level3(int x,int y){
+
     }
 
     @Override

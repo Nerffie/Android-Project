@@ -19,15 +19,9 @@ public class Background extends Sprite {
     Game g;
     private AndroidSound error_sound;
 
-    public Background(Game game,AndroidSound sound,Image image, int x, int y, int height, int width) {
+    public Background(Game game,Image image, int x, int y, int height, int width) {
         super(image, x, y, height, width);
-        error_sound = sound;
         g = game;
-    }
-
-    //we leave them static
-    public void play(){
-        this.error_sound.play(1);
     }
 
 }

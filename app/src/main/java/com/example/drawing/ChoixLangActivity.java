@@ -1,5 +1,6 @@
 package com.example.drawing;
 
+import android.app.Service;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.e_mobadara.audiomanaging.AudioSettingsActivity;
 import com.example.drawing.MainActivity;
 
 //import com.e_mobadara.audiomanaging.AudioSettingsActivity;
@@ -64,11 +67,7 @@ public class ChoixLangActivity extends AppCompatActivity {
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
-        //Loading the lists from Resources instead of loading them multiple times at runtime.
-        //Asset.CHARACTER_LIST = getResources().getStringArray(R.array.Characters);
-        //for (int i=0; i<Asset.CHARACTER_LIST.length; i++){
-        //    Log.i("info", Asset.CHARACTER_LIST[i]+" ");
-        //}
+
     }
 
     public void handleMusic(View view) {
@@ -90,10 +89,10 @@ public class ChoixLangActivity extends AppCompatActivity {
     }
 
 
-    //public void AudioSettings(View view) {
-    //   Intent i = new Intent(this, AudioSettingsActivity.class);
-    //   startActivity(i);
-    //}
+    public void AudioSettings(View view) {
+      Intent i = new Intent(this, AudioSettingsActivity.class);
+       startActivity(i);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -120,6 +119,6 @@ public class ChoixLangActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //stopService(new Intent(ChoixLangActivity.this, SoundService.class));
+        stopService(new Intent(ChoixLangActivity.this, ServiceSon.class));
     }
 }

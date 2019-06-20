@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.os.Handler;
 
+import com.e_mobadara.audiomanaging.AudioSettingsActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     public  static  Boolean isMusicPlay = false;
@@ -62,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AudioSettings(View view) {
-        //Intent i = new Intent(this, AudioSettingsActivity.class);
-        //startActivity(i);
+        Intent i = new Intent(this, AudioSettingsActivity.class);
+        startActivity(i);
     }
 
     public void MainActivityOnClick(View v){

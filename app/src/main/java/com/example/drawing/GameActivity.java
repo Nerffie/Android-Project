@@ -1,6 +1,8 @@
 package com.example.drawing;
+import android.media.MediaPlayer;
 import android.util.Log;
 
+import com.e_mobadara.audiomanaging.moblibAudioFileManager;
 import com.example.drawing.Asset;
 import com.example.drawing.MyScreen;
 import com.example.drawing.R;
@@ -11,17 +13,25 @@ import com.example.emobadaragaminglib.Implementation.AndroidSound;
 
 public class GameActivity extends AndroidGame {
     private static final String TAG = "GameActivity";
+    public static MediaPlayer Losingsound;
+    public static MediaPlayer Winningsound;
 
     @Override
     public Screen getInitScreen() {
-        initAssets();
-        Log.i(TAG, "getInitScreen: Assets are Loaded");
+        //initAssets();
+        //Log.i(TAG, "getInitScreen: Assets are Loaded");
+        Losingsound = moblibAudioFileManager.getRandomAudioFile(this,"encouragement","AR");
+        Winningsound = moblibAudioFileManager.getRandomAudioFile(this,"good","AR");
         return new MyScreen(this);
     }
 
     @Override
     public void setScreen(Screen screen) {
         super.setScreen(screen);
+    }
+
+    public void perviousClicked() {
+        this.finish();
     }
 
     public void initAssets(){
@@ -34,12 +44,12 @@ public class GameActivity extends AndroidGame {
         //Asset.blue_dot = getGraphics().newImage(R.drawable.blue_dot,Graphics.ImageFormat.ARGB8888,getResources());
         //Asset.green_dot = getGraphics().newImage(R.drawable.green_dot,Graphics.ImageFormat.ARGB8888,getResources());
 
-        Asset.red_sprite = getGraphics().newImage(R.drawable.rouge,Graphics.ImageFormat.ARGB8888,getResources());
-        Asset.blue_clair_sprite = getGraphics().newImage(R.drawable.bleu_clair,Graphics.ImageFormat.ARGB8888,getResources());
-        Asset.green_clair_sprite = getGraphics().newImage(R.drawable.vert_clair,Graphics.ImageFormat.ARGB8888,getResources());
-        Asset.yellow_sprite = getGraphics().newImage(R.drawable.jaune,Graphics.ImageFormat.ARGB8888,getResources());
-        Asset.rose_sprite = getGraphics().newImage(R.drawable.rose,Graphics.ImageFormat.ARGB8888,getResources());
-        Asset.blue_fonce_sprite = getGraphics().newImage(R.drawable.bleu_fonce,Graphics.ImageFormat.ARGB8888,getResources());
+        //Asset.red_sprite = getGraphics().newImage(R.drawable.rouge,Graphics.ImageFormat.ARGB8888,getResources());
+        //Asset.blue_clair_sprite = getGraphics().newImage(R.drawable.bleu_clair,Graphics.ImageFormat.ARGB8888,getResources());
+        //Asset.green_clair_sprite = getGraphics().newImage(R.drawable.vert_clair,Graphics.ImageFormat.ARGB8888,getResources());
+        //Asset.yellow_sprite = getGraphics().newImage(R.drawable.jaune,Graphics.ImageFormat.ARGB8888,getResources());
+        //Asset.rose_sprite = getGraphics().newImage(R.drawable.rose,Graphics.ImageFormat.ARGB8888,getResources());
+        //Asset.blue_fonce_sprite = getGraphics().newImage(R.drawable.bleu_fonce,Graphics.ImageFormat.ARGB8888,getResources());
         //Asset.bg1 = getGraphics().newImage(R.drawable.bg,Graphics.ImageFormat.ARGB8888,getResources());
         //Asset.bg2 = getGraphics().newImage(R.drawable.bg2,Graphics.ImageFormat.ARGB8888,getResources());
 
@@ -49,18 +59,14 @@ public class GameActivity extends AndroidGame {
         //MusicInstr.snare_image = getGraphics().newImage(R.drawable.snare,Graphics.ImageFormat.ARGB8888,getResources());
         Log.i(TAG, "initAssets: Loaded the Images");
         //Audio
-        Decor.forbidden_zone = (AndroidSound)getAudio().createSound(R.raw.error);
+        //Decor.forbidden_zone = (AndroidSound)getAudio().createSound(R.raw.error);
         //MusicInstr.bass_audio = (AndroidSound) getAudio().createSound(R.raw.kick);
         //MusicInstr.floor_tom_audio = (AndroidSound) getAudio().createSound(R.raw.floor_tom);
         //MusicInstr.hihat_audio = (AndroidSound) getAudio().createSound(R.raw.hi_hat_closed);
         //MusicInstr.snare_audio = (AndroidSound) getAudio().createSound(R.raw.snare);
         Log.i(TAG, "initAssets: Loaded the Audio");
         //Decor
-        switch (Asset.LEVEL){
-            case 1 : Decor.bg1 = getGraphics().newImage(R.drawable.bg2,Graphics.ImageFormat.ARGB8888,getResources());break;
-            case 2 : Decor.bg2 = getGraphics().newImage(R.drawable.bg3,Graphics.ImageFormat.ARGB8888,getResources());break;
-            case 3 : Decor.bg3 = getGraphics().newImage(R.drawable.bg4,Graphics.ImageFormat.ARGB8888,getResources());break;
-        }
+
 
 
 
