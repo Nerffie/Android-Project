@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Drawing</string>
     <string name="coloriage_loading">Coloriage</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="title_activity_lang" translatable="false">LangActivity</string>
+    <string name="title_activity_lettre_choix" translatable="false">LettreChoixActivity</string>
+
+
+    <string name="Francais">\n+ Français</string>
+    <string name="Arabe">\nعربي  +</string>
+    <string name="English">\n+ English</string>
+
+    <string name="level1">Level 1</string>
+    <string name="level2">Level 2</string>
+    <string name="level3">Level 3</string>
 </resources>

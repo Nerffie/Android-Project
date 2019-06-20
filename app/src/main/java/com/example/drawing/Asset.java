@@ -20,6 +20,8 @@ public class Asset  {
     public static Image rose_sprite;
     public static Image yellow_sprite;
     public static Image reset;
+    public static String LANG="fr";
+    public static int LEVEL;
 
 
 }

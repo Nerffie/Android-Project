@@ -56,6 +56,13 @@ public class GameActivity extends AndroidGame {
         //MusicInstr.snare_audio = (AndroidSound) getAudio().createSound(R.raw.snare);
         Log.i(TAG, "initAssets: Loaded the Audio");
         //Decor
-        Decor.bg = getGraphics().newImage(R.drawable.bg2,Graphics.ImageFormat.ARGB8888,getResources());
+        switch (Asset.LEVEL){
+            case 1 : Decor.bg1 = getGraphics().newImage(R.drawable.bg2,Graphics.ImageFormat.ARGB8888,getResources());break;
+            case 2 : Decor.bg2 = getGraphics().newImage(R.drawable.bg3,Graphics.ImageFormat.ARGB8888,getResources());break;
+            case 3 : Decor.bg3 = getGraphics().newImage(R.drawable.bg4,Graphics.ImageFormat.ARGB8888,getResources());break;
+        }
+
+
+
     }
 }

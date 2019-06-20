@@ -38,7 +38,12 @@ public class MyScreen extends Screen {
         super(game);
 
         //snake = new MySprite(game,Asset.avatar,0,0,100,100);
-        bg = new Background(game,Decor.forbidden_zone,Decor.bg,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth());
+        switch(Asset.LEVEL){
+            case 1 :  bg = new Background(game,Decor.forbidden_zone,Decor.bg1,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth()); break;
+            case 2 :  bg = new Background(game,Decor.forbidden_zone,Decor.bg2,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth()); break;
+            case 3 :  bg = new Background(game,Decor.forbidden_zone,Decor.bg3,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth()); break;
+        }
+
 
         //cercle1 = new Cercle(game,Asset.cercle,game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);
         //cercle2 = new Cercle(game,Asset.cercle,6*game.getGraphics().getHeight()/6,game.getGraphics().getWidth()/10,700,700);

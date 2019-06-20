@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
     public void MainActivityOnClick(View v){
         Intent intent = null;
         switch (v.getId()) {
-            //case R.id.start_btn:
-                //intent = new Intent(this, ChoixLangActivity.class);
-                //break;
+            case R.id.start_btn:
+                intent = new Intent(this, ChoixLangActivity.class);
+                break;
         }
         startActivity(intent);
     }
