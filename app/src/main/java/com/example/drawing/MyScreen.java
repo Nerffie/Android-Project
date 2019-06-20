@@ -27,6 +27,7 @@ public class MyScreen extends Screen {
     private Color rose_sprite;
     private Reset reset;
     private static int color ;
+    private int score;
 
 
     //private DrawableImage drawableCercle1;
@@ -62,6 +63,10 @@ public class MyScreen extends Screen {
         yellow_sprite = new Color(game,Asset.yellow_sprite,750,15,100,100,5);
 
         reset = new Reset(game,Asset.reset,game.getGraphics().getHeight()+700,5,150,150);
+
+        score = 0;
+
+
 
 
         //The drawableImage needs a bitmap. Let's create one from the R.drawable
@@ -101,7 +106,9 @@ public class MyScreen extends Screen {
 
         addSprite(reset);
 
+        addSprite(new Color(game,Asset.yellow_sprite,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()*4/100,100,100,5));
 
+        addSprite(new Color(game,Asset.yellow_sprite,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()*95/100,100,100,5));
 
 
 
@@ -155,6 +162,11 @@ public class MyScreen extends Screen {
             s = currentSprite(x, y);
             //s.setStatic(false);
             addSprite(s);
+            if(y<game.getGraphics().getHeight()*4/100|| y>game.getGraphics().getHeight()*95/100){
+                score++;
+                Log.i("score",Integer.toString(score));
+
+            }
         }
         //Sprite s = getDraggedSprite();
         //Log.i("here","wtf");
@@ -176,6 +188,10 @@ public class MyScreen extends Screen {
         }
 
         return null;
+    }
+
+    private boolean validate (){
+        return false;
     }
 
     @Override

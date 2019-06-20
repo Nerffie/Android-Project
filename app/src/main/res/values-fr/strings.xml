@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Coloriage</string>
+
+
+    <string name="Francais">\n+ Français</string>
+    <string name="Arabe">\nعربي  +</string>
+    <string name="English">\n+ English</string>
+
+    <string name="level1">Niveau 1</string>
+    <string name="level2">Niveau 2</string>
+    <string name="level3">Niveau 3</string>
+</resources>

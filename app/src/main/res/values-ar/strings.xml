@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تلوين</string>
+    <string name="Francais">\n+ Français</string>
+    <string name="Arabe">\nعربي  +</string>
+    <string name="English">\n+ English</string>
+
+    <string name="level1">المستوى الأول</string>
+    <string name="level2">المستوى الثاني</string>
+    <string name="level3">المستوى الثالث</string>
+</resources>
