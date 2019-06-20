@@ -4,4 +4,27 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="backgroundmatch">#FDFDF3</color>
+
+    <color name="colorWhite">#000000FF</color>
+
+    <color name="Green">#00FF00</color>
+    <color name="Orange">#e93ad4fa</color>
+    <color name="Blue">#E93AD4FA</color>
+    <color name="Pink">#FFB6C1</color>
+    <color name="Red">#FF0000</color>
+    <color name="Yellow">#FFFF00</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+
+    <color name="Transparent">#00FFFFFF</color>
+
+    <color name="CorrectTrace">#00FF00</color>
+    <color name="WrongTrace">#FF0000</color>
+
+
+    <color name="AppBg">#edf7f7</color>
+    <color name="ActionbarBg">#e93ad4fa</color>
+    <color name="ButtonBg">#e93ad4fa</color>
+    <color name="ToastBg">#99222222</color>
+    <color name="writing">#231f20</color>
 </resources>
