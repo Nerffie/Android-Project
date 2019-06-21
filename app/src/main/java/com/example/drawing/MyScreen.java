@@ -59,10 +59,10 @@ public class MyScreen extends Screen {
         Asset.valider = game.getGraphics().newImage(R.drawable.valider,Graphics.ImageFormat.ARGB8888,game.getResources());
         Asset.reset = game.getGraphics().newImage(R.drawable.reset,Graphics.ImageFormat.ARGB8888,game.getResources());
 
-        //Asset.happy_face = game.getGraphics().newImage(R.drawable.happy_face,Graphics.ImageFormat.ARGB8888,game.getResources());
-        //Asset.sad_face = game.getGraphics().newImage(R.drawable.sad_face,Graphics.ImageFormat.ARGB8888,game.getResources());
-        //Asset.wink_face = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
-        //Asset.blank = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.happy_face = game.getGraphics().newImage(R.drawable.happy_face,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.sad_face = game.getGraphics().newImage(R.drawable.sad_face,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.wink_face = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
+        Asset.blank = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
 
         // Audio modules imported :
 
@@ -93,11 +93,11 @@ public class MyScreen extends Screen {
 
         valider = new Button(game,Asset.valider,game.getGraphics().getWidth()*78/100,15,150,150);
 
-        //happy_face = new Button(game,Asset.happy_face,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()/2,400,400);
+        happy_face = new Button(game,Asset.blank,game.getGraphics().getWidth()*40/100,12,400,400);
 
-        //sad_face = new Button(game,Asset.sad_face,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()/2,400,400);
+        sad_face = new Button(game,Asset.blank,game.getGraphics().getWidth()*40/100,12,400,400);
 
-        //wink_face = new Button(game,Asset.wink_face,game.getGraphics().getWidth()/2,game.getGraphics().getHeight()/2,400,400);
+        wink_face = new Button(game,Asset.blank,game.getGraphics().getWidth()*40/100,12,400,400);
 
         score = true;
 
@@ -120,6 +120,10 @@ public class MyScreen extends Screen {
         addSprite(reset);
 
         addSprite(valider);
+
+        addSprite(happy_face);
+
+        addSprite(sad_face);
 
 
 
@@ -157,14 +161,14 @@ public class MyScreen extends Screen {
                 } catch (Exception e) {
                     Log.d("Error", "audio file is missing");
                 }
-                //bravo.setImage(drawing.bravo);
+                happy_face.setImage(Asset.happy_face);
                 //again.setImage(drawing.no_color);
                 //addSprite(happy_face);
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        //bravo.setImage(drawing.no_color);
+                        happy_face.setImage(Asset.blank);
                     }
                 };
                 timer.schedule(task, 1500);
@@ -190,13 +194,14 @@ public class MyScreen extends Screen {
                 }
                 //again.setImage(drawing.again);
                 //bravo.setImage(drawing.no_color);
+                sad_face.setImage(Asset.sad_face);
                 //addSprite(sad_face);
 
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        //again.setImage(drawing.no_color);
+                        sad_face.setImage(Asset.blank);
                     }
                 };
                 timer.schedule(task, 1500);
