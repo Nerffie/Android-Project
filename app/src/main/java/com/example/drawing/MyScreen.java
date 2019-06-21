@@ -30,11 +30,13 @@ public class MyScreen extends Screen {
     private Color green_clair_sprite;
     private Color yellow_sprite;
     private Color rose_sprite;
+    private Color current;
     private Button reset;
     private Button valider;
     private Button happy_face;
     private Button sad_face;
     private Button wink_face;
+    private Button cercle_noir;
     private static int color ;
     private boolean score;
     private int fill;
@@ -63,6 +65,8 @@ public class MyScreen extends Screen {
         Asset.sad_face = game.getGraphics().newImage(R.drawable.sad_face,Graphics.ImageFormat.ARGB8888,game.getResources());
         Asset.wink_face = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
         Asset.blank = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
+
+        Asset.cercle_noir = game.getGraphics().newImage(R.drawable.cercle_noir,Graphics.ImageFormat.ARGB8888,game.getResources());
 
         // Audio modules imported :
 
@@ -99,6 +103,10 @@ public class MyScreen extends Screen {
 
         wink_face = new Button(game,Asset.blank,game.getGraphics().getWidth()*40/100,12,400,400);
 
+        current = new Color(game,Asset.red_sprite,game.getGraphics().getWidth()*60/100,12,100,100,0);
+
+        cercle_noir = new Button(game,Asset.cercle_noir,game.getGraphics().getWidth()*60/100,12,105,105);
+
         score = true;
 
         color = 0;
@@ -125,6 +133,9 @@ public class MyScreen extends Screen {
 
         addSprite(sad_face);
 
+        addSprite(current);
+
+        addSprite(cercle_noir);
 
 
 
@@ -149,6 +160,13 @@ public class MyScreen extends Screen {
             if (s.getClass() == Color.class) {
                 Color colorSprite = (Color) s;
                 MyScreen.color = colorSprite.color;
+                switch (color){
+                    case 0 : current.setImage(Asset.red_sprite);break;
+                    case 1 : current.setImage(Asset.blue_clair_sprite); break;
+                    case 3 : current.setImage(Asset.green_clair_sprite);break;
+                    case 4 : current.setImage(Asset.rose_sprite);break;
+                    case 5 : current.setImage(Asset.yellow_sprite);break;
+                }
             }
 
 
@@ -174,6 +192,7 @@ public class MyScreen extends Screen {
                 timer.schedule(task, 1500);
                 playAudio("goodjob");
 
+
                 //data to send
                 Asset.succes++;
                 Asset.date_fin = Calendar.getInstance().getTime();
@@ -186,16 +205,14 @@ public class MyScreen extends Screen {
                 Asset.scores_time.add(difference);
 
             } else {
-                //valider again;
+
                 try {
                     GameActivity.Losingsound.start();
                 } catch (Exception e) {
                     Log.d("Error", "audio file is missing");
                 }
-                //again.setImage(drawing.again);
-                //bravo.setImage(drawing.no_color);
+
                 sad_face.setImage(Asset.sad_face);
-                //addSprite(sad_face);
 
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
@@ -206,7 +223,6 @@ public class MyScreen extends Screen {
                 };
                 timer.schedule(task, 1500);
                 playAudio("tryagain");
-
                 //data to send
                 Asset.fail++;
             }
@@ -325,7 +341,11 @@ public class MyScreen extends Screen {
 
     }
     public void level3(int x,int y){
-
+        if(x<game.getGraphics().getWidth()*12/100 || x>game.getGraphics().getWidth()*86/100 || y>game.getGraphics().getHeight()*70/100 || (x>game.getGraphics().getWidth()*34/100 && x<game.getGraphics().getWidth()*64/100) ){
+            score=false;
+            //Log.i("Aie","Aie");
+        }
+        Log.i("fill",Integer.toString(fill));
     }
 
     @Override

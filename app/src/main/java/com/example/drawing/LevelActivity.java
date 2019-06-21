@@ -93,42 +93,44 @@ public class LevelActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        for(int i=0; i<Asset.scores_time.size(); i++){
-            Asset.avg_time += Asset.scores_time.get(i);
+        if(!Asset.scores_time.isEmpty()) {
+            for (int i = 0; i < Asset.scores_time.size(); i++) {
+                Asset.avg_time += Asset.scores_time.get(i);
+            }
+
+            Asset.avg_time /= Asset.scores_time.size() != 0 ? Asset.scores_time.size() : 1;
+
+            Log.i("tosend", "level " + Asset.LEVEL
+                    + " succes " + Asset.succes
+                    + " faild " + Asset.fail +
+                    " min time " + Asset.min_time +
+                    " min time " + Asset.avg_time);
+            Statistics.setSuccessAttempts(Asset.succes);
+            Statistics.setFailedAttempts(Asset.fail);
+            Statistics.setMinTimeSucceed(Asset.min_time);
+            Statistics.setAvgTimeSucceedSec(Asset.avg_time);
+
+            LocationManager lm = (LocationManager) getSystemService(this.LOCATION_SERVICE);
+            double longitude = 11.2555;
+            double latitude = -2.55547;
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                //Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                //longitude = location.getLongitude();
+                //latitude = location.getLatitude();
+                //return;
+            }
+
+            Statistics.setGeoloc(longitude, latitude);
+            Log.i("tosend", longitude + " dsdf " + latitude);
+            Statistics.saveGame(this);
         }
-
-        Asset.avg_time /= Asset.scores_time.size() !=0? Asset.scores_time.size():1;
-
-        Log.i("tosend", "level " + Asset.LEVEL
-                + " succes " + Asset.succes
-                + " faild " + Asset.fail +
-                " min time " + Asset.min_time +
-                " min time " + Asset.avg_time);
-        Statistics.setSuccessAttempts(Asset.succes);
-        Statistics.setFailedAttempts(Asset.fail);
-        Statistics.setMinTimeSucceed(Asset.min_time);
-        Statistics.setAvgTimeSucceedSec(Asset.avg_time);
-
-        LocationManager lm = (LocationManager) getSystemService(this.LOCATION_SERVICE);
-        double longitude = 11.2555;
-        double latitude =-2.55547;
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            //Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            //longitude = location.getLongitude();
-            //latitude = location.getLatitude();
-            //return;
-        }
-
-        Statistics.setGeoloc(longitude, latitude);
-        Log.i("tosend", longitude+ " dsdf "+ latitude);
-        Statistics.saveGame(this);
         super.onDestroy();
     }
 }

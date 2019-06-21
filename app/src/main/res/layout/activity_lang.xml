@@ -17,7 +17,9 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:onClick="handleMusic"
-        app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
+        app:rippleColor="@color/Green"
+        app:backgroundTint="@color/Blue"
+        app:srcCompat="@drawable/music" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_perv"
@@ -26,7 +28,9 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="16dp"
         android:onClick="perviousClicked"
-        app:srcCompat="@android:drawable/ic_media_previous" />
+        app:rippleColor="@color/Green"
+        app:backgroundTint="@color/Blue"
+        app:srcCompat="@drawable/retour" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_setAudio"
@@ -35,6 +39,8 @@
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
         android:onClick="AudioSettings"
-        app:srcCompat="@android:drawable/ic_menu_manage"/>
+        app:rippleColor="@color/Green"
+        app:backgroundTint="@color/Blue"
+        app:srcCompat="@drawable/parametre"/>
 
 </android.support.design.widget.CoordinatorLayout>

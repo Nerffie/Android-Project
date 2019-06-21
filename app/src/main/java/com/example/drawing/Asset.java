@@ -20,6 +20,7 @@ public class Asset  {
     public static Image sad_face;
     public static Image wink_face;
     public static Image blank;
+    public static Image cercle_noir;
     public static String LANG="fr";
     public static int LEVEL;
 
