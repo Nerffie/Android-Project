@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChoixLangActivity"
-    android:background="@drawable/bg_lang">
+    android:background="@drawable/cadre">
 
 
     <include layout="@layout/content_lang" />
@@ -28,8 +28,8 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="16dp"
         android:onClick="perviousClicked"
-        app:rippleColor="@color/Green"
         app:backgroundTint="@color/Blue"
+        app:rippleColor="@color/Green"
         app:srcCompat="@drawable/retour" />
 
     <android.support.design.widget.FloatingActionButton

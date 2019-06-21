@@ -14,7 +14,7 @@ public class ServiceSon extends Service {
     }
 
     public void onCreate() {
-        player = MediaPlayer.create(this, R.raw.bgmusic); //select music file
+        player = MediaPlayer.create(this, R.raw.kids_music); //select music file
         player.setLooping(true); //set looping
         player.setVolume(0.5f, 0.5f);
     }
