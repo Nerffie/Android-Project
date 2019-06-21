@@ -171,15 +171,15 @@ public class MyScreen extends Screen {
                 playAudio("goodjob");
 
                 //data to send
-                //Asset.successAttempts++;
-                //Asset.date_end = Calendar.getInstance().getTime();
-                //long difference = (Asset.date_end.getTime() - Asset.date_start.getTime()) / 1000; //sec
-                //if (Asset.successAttempts == 1) { // first time
-                //    Asset.min_time = difference;
-                //} else if (Asset.min_time > difference) {
-                //   Asset.min_time = difference;
-                //}
-                //Asset.scores_time.add(difference);
+                Asset.succes++;
+                Asset.date_fin = Calendar.getInstance().getTime();
+                long difference = (Asset.date_fin.getTime() - Asset.date_debut.getTime()) / 1000; //sec
+                if (Asset.succes == 1) { // first time
+                    Asset.min_time = difference;
+                } else if (Asset.min_time > difference){
+                   Asset.min_time = difference;
+                }
+                Asset.scores_time.add(difference);
 
             } else {
                 //valider again;
@@ -203,7 +203,7 @@ public class MyScreen extends Screen {
                 playAudio("tryagain");
 
                 //data to send
-                //Asset.failedAttempts++;
+                Asset.fail++;
             }
             //game.setScreen(new MainScreen(game));
             //resume();
@@ -214,6 +214,7 @@ public class MyScreen extends Screen {
         if ((reset.contain(x, y))) {
 
             reset();
+            Asset.date_debut = Calendar.getInstance().getTime();
         }
     }
 

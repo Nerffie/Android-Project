@@ -4,6 +4,9 @@ package com.example.drawing;
 import com.example.emobadaragaminglib.Base.Image;
 import com.example.emobadaragaminglib.Implementation.AndroidSound;
 
+import java.util.Date;
+import java.util.List;
+
 public class Asset  {
 
     public static Image green_clair_sprite;
@@ -19,6 +22,17 @@ public class Asset  {
     public static Image blank;
     public static String LANG="fr";
     public static int LEVEL;
+
+    //statistiques
+    public static int succes = 0;
+    public static int fail = 0;
+    public static long min_time = 0;
+    public static long avg_time = 0;
+
+    public static Date date_debut;
+    public static Date date_fin;
+
+    public static List<Long> scores_time;
 
 
 }

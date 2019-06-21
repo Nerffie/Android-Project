@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
 public class Statistics {
 
     private static GameStat gameStat;
-    final String app_id = "2019_2_4_2";
-    final String ex_id = "T_5_27";
+    final String app_id = "2019_2_6_2";
+    final String ex_id = "T_5_9";
 
     private Statistics() {
         gameStat = new GameStat();

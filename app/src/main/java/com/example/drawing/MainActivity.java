@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.os.Handler;
 
 import com.e_mobadara.audiomanaging.AudioSettingsActivity;
+import com.example.ensias_auth_library.FoxyAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         FloatingActionButton fab = findViewById(R.id.fab);
 
         music = MusicFond.getMusic (MainActivity.this);
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //FoxyAuth.emerge(this,MainActivity.class);
+
+        FoxyAuth.emerge(this,MainActivity.class);
     }
 
     public void handleMusic(View view) {
