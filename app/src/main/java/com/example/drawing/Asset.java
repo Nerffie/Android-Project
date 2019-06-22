@@ -4,6 +4,7 @@ package com.example.drawing;
 import com.example.emobadaragaminglib.Base.Image;
 import com.example.emobadaragaminglib.Implementation.AndroidSound;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class Asset  {
     public static Image cercle_noir;
     public static String LANG="fr";
     public static int LEVEL;
+    public static int[] marge;
+    public static int[] fillPercentage;
 
     //statistiques
     public static int succes = 0;

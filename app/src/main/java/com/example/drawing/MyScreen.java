@@ -17,7 +17,9 @@ import com.example.emobadaragaminglib.Implementation.AndroidSound;
 import com.e_mobadara.audiomanaging.moblibAudioFileManager;
 import com.example.drawing.GameActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -67,6 +69,14 @@ public class MyScreen extends Screen {
         Asset.blank = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
 
         Asset.cercle_noir = game.getGraphics().newImage(R.drawable.cercle_noir,Graphics.ImageFormat.ARGB8888,game.getResources());
+        //Asset.marge = new ArrayList<Integer>();
+        //Asset.fillPercentage = new ArrayList<Integer>();
+        Asset.marge = new int[4];
+        Asset.fillPercentage = new int[3];
+        Asset.fillPercentage[0]=200;
+        Asset.fillPercentage[1]=400;
+        Asset.fillPercentage[2]=150;
+
 
         // Audio modules imported :
 
@@ -74,9 +84,38 @@ public class MyScreen extends Screen {
 
 
         switch (Asset.LEVEL){
-            case 1 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());break;
-            case 2 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());break;
-            case 3 : Decor.bg1= game.getGraphics().newImage(R.drawable.carreaux_difficile,Graphics.ImageFormat.ARGB8888,game.getResources());break;
+            case 1 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
+            //Asset.marge.set(0,30);
+            //Asset.marge.set(1,70);
+            //Asset.marge.set(2,135);
+            //Asset.marge.set(3,85);
+            Asset.marge[0]=30;
+            Asset.marge[1]=70;
+            Asset.marge[2]=135;
+            Asset.marge[3]=85;
+
+                        break;
+            case 2 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
+                        //Asset.marge.set(0,30);
+                        //Asset.marge.set(1,70);
+                        //Asset.marge.set(2,135);
+                        //Asset.marge.set(3,85);
+                Asset.marge[0]=30;
+                Asset.marge[1]=70;
+                Asset.marge[2]=135;
+                Asset.marge[3]=85;
+                        break;
+            case 3 : Decor.bg1= game.getGraphics().newImage(R.drawable.carreaux_difficile,Graphics.ImageFormat.ARGB8888,game.getResources());
+
+                        //Asset.marge.set(0,30);
+                        //Asset.marge.set(1,70);
+                        //Asset.marge.set(2,135);
+                        //Asset.marge.set(3,85);
+                Asset.marge[0]=30;
+                Asset.marge[1]=70;
+                Asset.marge[2]=135;
+                Asset.marge[3]=85;
+                        break;
         }
 
 
@@ -260,13 +299,13 @@ public class MyScreen extends Screen {
     @Override
     public void handleDragging(int x, int y, int pointer) {
         super.handleDragging(x, y, pointer);
-        if (y>135) {
+        if (y>Asset.marge[2] && y < game.getGraphics().getHeight()*Asset.marge[3]/100 && x >game.getGraphics().getWidth()*Asset.marge[0]/100 && x<game.getGraphics().getWidth()*Asset.marge[1]/100) {
             Sprite s;
             s = currentSprite(x, y);
             //s.setStatic(false);
             addSprite(s);
             fill++;
-           score(Asset.LEVEL, x ,y);
+           //score(Asset.LEVEL, x ,y);
         }
     }
 
@@ -315,17 +354,17 @@ public class MyScreen extends Screen {
     public boolean resultat(){
         switch (Asset.LEVEL){
             case 1 :
-                if (fill>200 && score)return true;
+                if (fill>Asset.fillPercentage[0])return true;
                 return false;
 
 
             case 2 :
-                if(fill>400 && score)return true;
+                if(fill>Asset.fillPercentage[1])return true;
                 return false;
 
 
             case 3 :
-                if (fill >150 && score)return true;
+                if (fill >Asset.fillPercentage[2])return true;
                 return false;
 
         }
