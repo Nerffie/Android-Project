@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
 
         music = MusicFond.getMusic (MainActivity.this);
+        FoxyAuth.emerge(this,MainActivity.class);
         startService(music);
         isMusicPlay = true;
         fab.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        FoxyAuth.emerge(this,MainActivity.class);
+
     }
 
     public void handleMusic(View view) {
