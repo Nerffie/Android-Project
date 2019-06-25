@@ -58,9 +58,22 @@ public class ParameterActivity extends AppCompatActivity {
     }
 
     public void saveValues(View view) {
-        Asset.fillPercentage[0]=Integer.parseInt(level1.getText().toString());
-        Asset.fillPercentage[1]=Integer.parseInt(level2.getText().toString());
-        Asset.fillPercentage[2]=Integer.parseInt(level3.getText().toString());
+     
+        try{
+            Asset.fillPercentage[0]=Integer.parseInt(level1.getText().toString());
+        }catch (Exception e){
+            Asset.fillPercentage[0]=200;
+        }
+        try{
+            Asset.fillPercentage[1]=Integer.parseInt(level2.getText().toString());
+        }catch (Exception e){
+            Asset.fillPercentage[1]=400;
+        }
+        try{
+            Asset.fillPercentage[2]=Integer.parseInt(level3.getText().toString());
+        }catch (Exception e){
+            Asset.fillPercentage[2]=150;
+        }
         this.finish();
     }
 }
