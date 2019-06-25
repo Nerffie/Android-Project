@@ -4,24 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ParameterActivity"
+    android:background="@drawable/cadre">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_parameter" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -29,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:onClick="handleMusic"
         app:rippleColor="@color/Green"
         app:backgroundTint="@color/Blue"
         app:srcCompat="@drawable/music" />
@@ -40,8 +28,8 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="16dp"
         android:onClick="perviousClicked"
-        app:rippleColor="@color/Green"
         app:backgroundTint="@color/Blue"
+        app:rippleColor="@color/Green"
         app:srcCompat="@drawable/retour" />
 
     <android.support.design.widget.FloatingActionButton
@@ -54,8 +42,5 @@
         app:rippleColor="@color/Green"
         app:backgroundTint="@color/Blue"
         app:srcCompat="@drawable/parametre"/>
-
-
-
 
 </android.support.design.widget.CoordinatorLayout>

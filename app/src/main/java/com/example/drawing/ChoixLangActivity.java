@@ -116,9 +116,5 @@ public class ChoixLangActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopService(new Intent(ChoixLangActivity.this, ServiceSon.class));
-    }
+
 }

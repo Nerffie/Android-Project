@@ -69,26 +69,19 @@ public class MyScreen extends Screen {
         Asset.blank = game.getGraphics().newImage(R.drawable.transparent,Graphics.ImageFormat.ARGB8888,game.getResources());
 
         Asset.cercle_noir = game.getGraphics().newImage(R.drawable.cercle_noir,Graphics.ImageFormat.ARGB8888,game.getResources());
-        //Asset.marge = new ArrayList<Integer>();
-        //Asset.fillPercentage = new ArrayList<Integer>();
+
         Asset.marge = new int[4];
-        Asset.fillPercentage = new int[3];
-        Asset.fillPercentage[0]=200;
-        Asset.fillPercentage[1]=400;
-        Asset.fillPercentage[2]=150;
 
 
-        // Audio modules imported :
+
+
 
 
 
 
         switch (Asset.LEVEL){
             case 1 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
-            //Asset.marge.set(0,30);
-            //Asset.marge.set(1,70);
-            //Asset.marge.set(2,135);
-            //Asset.marge.set(3,85);
+
             Asset.marge[0]=32;
             Asset.marge[1]=63;
             Asset.marge[2]=19;
@@ -96,10 +89,7 @@ public class MyScreen extends Screen {
 
                         break;
             case 2 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
-                        //Asset.marge.set(0,30);
-                        //Asset.marge.set(1,70);
-                        //Asset.marge.set(2,135);
-                        //Asset.marge.set(3,85);
+
                 Asset.marge[0]=30;
                 Asset.marge[1]=63;
                 Asset.marge[2]=19;
@@ -107,10 +97,7 @@ public class MyScreen extends Screen {
                         break;
             case 3 : Decor.bg1= game.getGraphics().newImage(R.drawable.carreaux_difficile,Graphics.ImageFormat.ARGB8888,game.getResources());
 
-                        //Asset.marge.set(0,30);
-                        //Asset.marge.set(1,70);
-                        //Asset.marge.set(2,135);
-                        //Asset.marge.set(3,85);
+
                 Asset.marge[0]=34;
                 Asset.marge[1]=60;
                 Asset.marge[2]=25;

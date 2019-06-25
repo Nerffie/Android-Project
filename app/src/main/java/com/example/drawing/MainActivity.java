@@ -46,7 +46,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (isMusicPlay == true) {
+            startService(music);
 
+        } else {
+            stopService(music);
+        }
+
+    }
     public void handleMusic(View view) {
         if (isMusicPlay == true) {
             stopService(music);
@@ -60,15 +70,22 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         stopService(music);
+        isMusicPlay = false;
         this.finish();
     }
     public void perviousClicked( View v) {
         stopService(music);
+        isMusicPlay = false;
         this.finish();
     }
 
     public void AudioSettings(View view) {
         Intent i = new Intent(this, AudioSettingsActivity.class);
+        startActivity(i);
+    }
+
+    public void Parameter(View view){
+        Intent i = new Intent(this,ParameterActivity.class);
         startActivity(i);
     }
 
@@ -101,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
         //}
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(MainActivity.this, ServiceSon.class));
     }
 
 }

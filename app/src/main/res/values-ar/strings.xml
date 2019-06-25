@@ -8,4 +8,6 @@
     <string name="level1">المستوى الأول</string>
     <string name="level2">المستوى الثاني</string>
     <string name="level3">المستوى الثالث</string>
+
+    <string name="save">حفظ</string>
 </resources>

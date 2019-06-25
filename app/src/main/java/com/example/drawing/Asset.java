@@ -25,7 +25,7 @@ public class Asset  {
     public static String LANG="fr";
     public static int LEVEL;
     public static int[] marge;
-    public static int[] fillPercentage;
+    public static int[] fillPercentage = {200,400,150};
 
     //statistiques
     public static int succes = 0;
