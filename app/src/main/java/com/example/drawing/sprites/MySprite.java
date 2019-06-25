@@ -1,10 +1,12 @@
-package com.example.drawing;
+package com.example.drawing.sprites;
+
+import android.util.Log;
 
 import com.example.emobadaragaminglib.Base.Game;
 import com.example.emobadaragaminglib.Base.Image;
 import com.example.emobadaragaminglib.Components.Sprite;
 
-public class Red extends Sprite {
+public class MySprite extends Sprite {
     /**
      * Constructor
      *
@@ -14,10 +16,9 @@ public class Red extends Sprite {
      * @param height Height of the Sprite
      * @param width  Width of the sprite
      */
-
     Game g;
 
-    public Red (Game game,Image image, int x, int y, int height, int width) {
+    public MySprite (Game game,Image image, int x, int y, int height, int width) {
         super(image, x, y, height, width);
         g = game;
     }

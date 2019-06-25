@@ -1,10 +1,9 @@
-package com.example.drawing;
+package com.example.drawing.activity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -15,7 +14,9 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import com.e_mobadara.audiomanaging.AudioSettingsActivity;
-import com.example.drawing.MainActivity;
+import com.example.drawing.R;
+import com.example.drawing.db.Statistics;
+import com.example.drawing.asset.Asset;
 
 public class LevelActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class LevelActivity extends AppCompatActivity {
         Log.i("info", "lang \n =====================================" +
                 "\nun choix de Niveau a été effectué" +
                 "\n ========================================");
-        intent = new Intent(this,GameActivity.class);
+        intent = new Intent(this, GameActivity.class);
         switch (v.getId()) {
             case R.id.level1_button:
                 Asset.LEVEL= 1;

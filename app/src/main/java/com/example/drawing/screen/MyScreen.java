@@ -1,30 +1,26 @@
-package com.example.drawing;
+package com.example.drawing.screen;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.util.Log;
 
+import com.example.drawing.R;
+import com.example.drawing.activity.GameActivity;
+import com.example.drawing.asset.Asset;
+import com.example.drawing.sprites.MySprite;
+import com.example.drawing.sprites.Color;
 import com.example.emobadaragaminglib.Base.Game;
 import com.example.emobadaragaminglib.Base.Graphics;
-import com.example.emobadaragaminglib.Base.Image;
 import com.example.emobadaragaminglib.Base.Screen;
-import com.example.emobadaragaminglib.Components.DrawableImage;
 import com.example.emobadaragaminglib.Components.Sprite;
-import com.example.emobadaragaminglib.Implementation.AndroidGame;
-import com.example.emobadaragaminglib.Implementation.AndroidSound;
 import com.e_mobadara.audiomanaging.moblibAudioFileManager;
-import com.example.drawing.GameActivity;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MyScreen extends Screen {
-    private Background bg;
+    private MySprite bg;
 
     private Color red_sprite;
     private Color blue_clair_sprite;
@@ -33,12 +29,12 @@ public class MyScreen extends Screen {
     private Color yellow_sprite;
     private Color rose_sprite;
     private Color current;
-    private Button reset;
-    private Button valider;
-    private Button happy_face;
-    private Button sad_face;
-    private Button wink_face;
-    private Button cercle_noir;
+    private MySprite reset;
+    private MySprite valider;
+    private MySprite happy_face;
+    private MySprite sad_face;
+    private MySprite wink_face;
+    private MySprite cercle_noir;
     private static int color ;
     private boolean score;
     private int fill;
@@ -80,7 +76,7 @@ public class MyScreen extends Screen {
 
 
         switch (Asset.LEVEL){
-            case 1 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
+            case 1 : Asset.bg=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
 
             Asset.marge[0]=32;
             Asset.marge[1]=63;
@@ -88,14 +84,14 @@ public class MyScreen extends Screen {
             Asset.marge[3]=75;
 
                         break;
-            case 2 : Decor.bg1=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
+            case 2 : Asset.bg=game.getGraphics().newImage(R.drawable.carreaux_facile,Graphics.ImageFormat.ARGB8888,game.getResources());
 
                 Asset.marge[0]=30;
                 Asset.marge[1]=63;
                 Asset.marge[2]=19;
                 Asset.marge[3]=75;
                         break;
-            case 3 : Decor.bg1= game.getGraphics().newImage(R.drawable.carreaux_difficile,Graphics.ImageFormat.ARGB8888,game.getResources());
+            case 3 : Asset.bg= game.getGraphics().newImage(R.drawable.carreaux_difficile,Graphics.ImageFormat.ARGB8888,game.getResources());
 
 
                 Asset.marge[0]=34;
@@ -107,7 +103,7 @@ public class MyScreen extends Screen {
 
 
 
-        bg = new Background(game,Decor.bg1,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth());
+        bg = new MySprite(game,Asset.bg,0,0,game.getGraphics().getHeight(),game.getGraphics().getWidth());
 
         red_sprite = new Color(game,Asset.red_sprite,0,15,100,100,0);
 
@@ -119,19 +115,19 @@ public class MyScreen extends Screen {
 
         yellow_sprite = new Color(game,Asset.yellow_sprite,600,15,100,100,5);
 
-        reset = new Button(game,Asset.reset,game.getGraphics().getWidth()*91/100,15,150,150);
+        reset = new MySprite(game,Asset.reset,game.getGraphics().getWidth()*91/100,15,150,150);
 
-        valider = new Button(game,Asset.valider,game.getGraphics().getWidth()*78/100,15,150,150);
+        valider = new MySprite(game,Asset.valider,game.getGraphics().getWidth()*78/100,15,150,150);
 
-        happy_face = new Button(game,Asset.blank,game.getGraphics().getWidth()*10/100,game.getGraphics().getHeight()*40/100,400,400);
+        happy_face = new MySprite(game,Asset.blank,game.getGraphics().getWidth()*10/100,game.getGraphics().getHeight()*40/100,400,400);
 
-        sad_face = new Button(game,Asset.blank,game.getGraphics().getWidth()*75/100,game.getGraphics().getHeight()*40/100,400,400);
+        sad_face = new MySprite(game,Asset.blank,game.getGraphics().getWidth()*75/100,game.getGraphics().getHeight()*40/100,400,400);
 
-        wink_face = new Button(game,Asset.blank,game.getGraphics().getWidth()*40/100,12,400,400);
+        wink_face = new MySprite(game,Asset.blank,game.getGraphics().getWidth()*40/100,12,400,400);
 
         current = new Color(game,Asset.red_sprite,game.getGraphics().getWidth()*60/100,12,100,100,0);
 
-        cercle_noir = new Button(game,Asset.cercle_noir,game.getGraphics().getWidth()*60/100,12,105,105);
+        cercle_noir = new MySprite(game,Asset.cercle_noir,game.getGraphics().getWidth()*60/100,12,105,105);
 
         score = true;
 
@@ -289,10 +285,8 @@ public class MyScreen extends Screen {
         if (y>game.getGraphics().getHeight()*Asset.marge[2]/100 && y < game.getGraphics().getHeight()*Asset.marge[3]/100 && x >game.getGraphics().getWidth()*Asset.marge[0]/100 && x<game.getGraphics().getWidth()*Asset.marge[1]/100) {
             Sprite s;
             s = currentSprite(x, y);
-            //s.setStatic(false);
             addSprite(s);
             fill++;
-           //score(Asset.LEVEL, x ,y);
         }
     }
 
@@ -305,38 +299,15 @@ public class MyScreen extends Screen {
             case 4 : return new Color(game,Asset.rose_sprite,x,y,100,100,4);
             case 5 : return new Color(game,Asset.yellow_sprite,x,y,100,100,5);
         }
-
         return null;
     }
 
-    private boolean validate (){
-        return false;
-    }
 
     private void reset(){
         dispose();
         ((GameActivity) game).perviousClicked();
-
     }
 
-    public void score(int level,int x ,int y){
-        switch(level){
-            case 1 : level1(x,y);break;
-            case 2 : level2(x,y);break;
-            case 3 : level3(x,y);break;
-        }
-    }
-
-    public void level1(int x,int y){
-
-        if(x<game.getGraphics().getWidth()*4/100 || x>game.getGraphics().getWidth()*95/100 || y>game.getGraphics().getHeight()*86/100 || (x>game.getGraphics().getWidth()*43/100 && x<game.getGraphics().getWidth()*56/100) ){
-            score=false;
-            //Log.i("Aie","Aie");
-        }
-        Log.i("fill",Integer.toString(fill));
-
-
-    }
 
     public boolean resultat(){
         switch (Asset.LEVEL){
@@ -356,22 +327,6 @@ public class MyScreen extends Screen {
 
         }
         return false;
-    }
-
-    public void level2(int x,int y){
-        if(x<game.getGraphics().getWidth()*6/100 || x>game.getGraphics().getWidth()*93/100 || y>game.getGraphics().getHeight()*75/100 || (x>game.getGraphics().getWidth()*38/100 && x<game.getGraphics().getWidth()*58/100) ){
-            score=false;
-            //Log.i("Aie","Aie");
-        }
-        Log.i("fill",Integer.toString(fill));
-
-    }
-    public void level3(int x,int y){
-        if(x<game.getGraphics().getWidth()*12/100 || x>game.getGraphics().getWidth()*86/100 || y>game.getGraphics().getHeight()*70/100 || (x>game.getGraphics().getWidth()*34/100 && x<game.getGraphics().getWidth()*64/100) ){
-            score=false;
-            //Log.i("Aie","Aie");
-        }
-        Log.i("fill",Integer.toString(fill));
     }
 
     @Override

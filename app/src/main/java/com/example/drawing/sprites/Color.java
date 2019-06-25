@@ -1,11 +1,10 @@
-package com.example.drawing;
+package com.example.drawing.sprites;
 
 import com.example.emobadaragaminglib.Base.Game;
 import com.example.emobadaragaminglib.Base.Image;
 import com.example.emobadaragaminglib.Components.Sprite;
-import com.example.emobadaragaminglib.Implementation.AndroidSound;
 
-public class Background extends Sprite {
+public class Color extends Sprite {
     /**
      * Constructor
      *
@@ -15,13 +14,13 @@ public class Background extends Sprite {
      * @param height Height of the Sprite
      * @param width  Width of the sprite
      */
-
+    public int color;
     Game g;
-    private AndroidSound error_sound;
 
-    public Background(Game game,Image image, int x, int y, int height, int width) {
+    public Color (Game game,Image image, int x, int y, int height, int width,int color) {
         super(image, x, y, height, width);
         g = game;
-    }
+        this.color=color;
 
+    }
 }

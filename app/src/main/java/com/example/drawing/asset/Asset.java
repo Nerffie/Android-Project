@@ -1,4 +1,4 @@
-package com.example.drawing;
+package com.example.drawing.asset;
 
 
 import com.example.emobadaragaminglib.Base.Image;
@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Asset  {
-
+    public static Image bg;
     public static Image green_clair_sprite;
     public static Image blue_clair_sprite;
     public static Image red_sprite;

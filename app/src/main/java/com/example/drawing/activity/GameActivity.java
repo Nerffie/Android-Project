@@ -1,15 +1,11 @@
-package com.example.drawing;
+package com.example.drawing.activity;
 import android.media.MediaPlayer;
-import android.util.Log;
 
 import com.e_mobadara.audiomanaging.moblibAudioFileManager;
-import com.example.drawing.Asset;
-import com.example.drawing.MyScreen;
-import com.example.drawing.R;
-import com.example.emobadaragaminglib.Base.Graphics;
+import com.example.drawing.screen.MyScreen;
+import com.example.drawing.asset.Asset;
 import com.example.emobadaragaminglib.Base.Screen;
 import com.example.emobadaragaminglib.Implementation.AndroidGame;
-import com.example.emobadaragaminglib.Implementation.AndroidSound;
 
 import java.util.Calendar;
 

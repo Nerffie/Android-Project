@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menu_three_levels"
-    tools:context=".LevelActivity">
+    tools:context=".activity.LevelActivity">
 
     <Button
         android:id="@+id/level1_button"

@@ -1,6 +1,5 @@
-package com.example.drawing;
+package com.example.drawing.activity;
 
-import android.app.Service;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -14,7 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.e_mobadara.audiomanaging.AudioSettingsActivity;
-import com.example.drawing.MainActivity;
+import com.example.drawing.R;
+import com.example.drawing.asset.Asset;
 
 //import com.e_mobadara.audiomanaging.AudioSettingsActivity;
 

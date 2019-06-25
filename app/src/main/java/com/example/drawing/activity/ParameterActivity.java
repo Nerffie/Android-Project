@@ -1,8 +1,7 @@
-package com.example.drawing;
+package com.example.drawing.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.e_mobadara.audiomanaging.AudioSettingsActivity;
-import com.example.ensias_auth_library.FoxyAuth;
+import com.example.drawing.R;
+import com.example.drawing.activity.MainActivity;
+import com.example.drawing.asset.Asset;
 
 public class ParameterActivity extends AppCompatActivity {
 
@@ -58,7 +59,7 @@ public class ParameterActivity extends AppCompatActivity {
     }
 
     public void saveValues(View view) {
-     
+
         try{
             Asset.fillPercentage[0]=Integer.parseInt(level1.getText().toString());
         }catch (Exception e){

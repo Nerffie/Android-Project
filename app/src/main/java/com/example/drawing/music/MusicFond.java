@@ -1,4 +1,4 @@
-package com.example.drawing;
+package com.example.drawing.music;
 
 import android.content.Context;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.example.drawing;
+package com.example.drawing.db;
 
 import android.content.Context;
 import android.util.Log;

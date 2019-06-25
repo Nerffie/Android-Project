@@ -1,20 +1,18 @@
-package com.example.drawing;
+package com.example.drawing.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.design.widget.FloatingActionButton;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.os.Handler;
 
 import com.e_mobadara.audiomanaging.AudioSettingsActivity;
+import com.example.drawing.music.MusicFond;
+import com.example.drawing.R;
+import com.example.drawing.music.ServiceSon;
 import com.example.ensias_auth_library.FoxyAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
 
-        music = MusicFond.getMusic (MainActivity.this);
+
         FoxyAuth.emerge(this,MainActivity.class);
+        music = MusicFond.getMusic (MainActivity.this);
         startService(music);
         isMusicPlay = true;
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Parameter(View view){
-        Intent i = new Intent(this,ParameterActivity.class);
+        Intent i = new Intent(this, ParameterActivity.class);
         startActivity(i);
     }
 
